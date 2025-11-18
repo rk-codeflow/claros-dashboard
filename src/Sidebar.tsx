@@ -16,16 +16,16 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
   return (
     <aside
       className={`
-    fixed top-0 left-0 h-full w-52 bg-gray-900 text-white z-50
+    fixed top-0 left-0 h-full w-60  bg-gray-900 text-white z-50
     transform transition-transform duration-300
     ${isOpen ? "translate-x-0" : "-translate-x-full"}
-    sm:static sm:translate-x-0
+    sm:relative sm:translate-x-0
   `}
     >
       {/* Header + Toggle */}
       <div className="p-6 flex items-center justify-between border-b border-gray-700">
         <div>
-          <h1 className="text-xl font-bold text-white">ClarosAnalytics</h1>
+          <h1 className="text-xl font-bold text-[#00b4ad]">ClarosAnalytics</h1>
           <p className="text-xs text-gray-300 mt-1">Dashboard</p>
         </div>
       </div>
@@ -39,7 +39,7 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
       )} */}
 
       {/* Navigation Items */}
-      <nav className="flex flex-col p-4 space-y-2">
+      <nav className="flex flex-col p-4 space-y-4">
         {links.map((link) => {
           const Icon = link.icon;
           const isActive = currentPage === link.id;
@@ -47,15 +47,15 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
             <button
               key={link.id}
               className={`
-                flex items-center p-2 rounded
+                flex gap-x-4 items-center py-3 px-4 rounded-md
                 transition-all duration-200
-               ${isActive ? "bg-amber-500 text-black" : "text-white"}
+               ${isActive ? "bg-[#00b4ad] text-black" : "text-white"}
 
               `}
               onClick={() => setCurrentPage(link.id as Page)}
             >
               <Icon className="w-5 h-5" />
-              <span>{link.label}</span>
+              <span className="font-medium text-sm">{link.label}</span>
             </button>
           );
         })}

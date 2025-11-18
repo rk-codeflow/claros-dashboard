@@ -3,6 +3,7 @@ import Data from "./components/Data";
 import Sidebar from "./Sidebar";
 import { useAppDispatch, useAppSelector } from "./components/hooks/hooks";
 import { setPage, type Page } from "./slices/pageSlice";
+import Header from "./components/Header";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -17,7 +18,8 @@ function App() {
         isOpen={sidebarOpen}
       />
 
-      <main className="p-5 min-h-screen flex flex-col transition-all duration-300 w-full">
+      <main className="min-h-screen flex flex-col space-y-6 transition-all duration-300 w-full bg-[#F8F8F8]">
+        <Header />
         {currentPage === "home" && <Home />}
         {currentPage === "data" && <Data />}
       </main>
