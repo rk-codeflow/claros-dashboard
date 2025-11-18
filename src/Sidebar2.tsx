@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { FaHome, FaDatabase } from "react-icons/fa";
+import type { Page } from "./slices/pageSlice";
 
 interface SidebarProps {
   currentPage: string;
-  setCurrentPage: (page: string) => void;
+  setCurrentPage: (p: Page) => void;
+  isOpen:
 }
 
 const Sidebar = ({ currentPage, setCurrentPage }: SidebarProps) => {

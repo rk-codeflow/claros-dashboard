@@ -1,39 +1,13 @@
-import { useState, useEffect } from "react";
-import { IoChevronDownSharp } from "react-icons/io5";
 import { FaHome, FaDatabase } from "react-icons/fa";
+import type { Page } from "./slices/pageSlice";
 
-// interface SidebarProps {
-//   currentPage: string;
-//   setCurrentPage: (page: string) => void;
-// }
+interface SidebarProps {
+  currentPage: string;
+  setCurrentPage: (p: Page) => void;
+  isOpen: boolean;
+}
 
-const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Check if we're on mobile viewport
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 500);
-    };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-  const toggleSidebar = () => {
-    if (isMobile) {
-      setSidebarOpen(!sidebarOpen);
-    }
-  };
-
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-  };
-
+const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
   const links = [
     { id: "home", label: "Home", icon: FaHome },
     { id: "data", label: "Data", icon: FaDatabase },
@@ -42,43 +16,46 @@ const Sidebar = () => {
   return (
     <aside
       className={`
-          bg-tomato text-white w-52 h-screen p-5 shadow-lg transition-transform duration-300
-          ${
-            isMobile
-              ? `fixed z-50 transform ${
-                  sidebarOpen ? "translate-x-0" : "-translate-x-52"
-                }`
-              : "relative"
-          }
-        `}
+    fixed top-0 left-0 h-full w-52 bg-gray-900 text-white z-50
+    transform transition-transform duration-300
+    ${isOpen ? "translate-x-0" : "-translate-x-full"}
+    sm:static sm:translate-x-0
+  `}
     >
       {/* Header + Toggle */}
       <div className="p-6 flex items-center justify-between border-b border-gray-700">
-        {isExpanded && (
-          <div>
-            <h1 className="text-xl font-bold text-white">ClarosAnalytics</h1>
-            <p className="text-xs text-gray-300 mt-1">Dashboard</p>
-          </div>
-        )}
+        <div>
+          <h1 className="text-xl font-bold text-white">ClarosAnalytics</h1>
+          <p className="text-xs text-gray-300 mt-1">Dashboard</p>
+        </div>
       </div>
+
+      {/* Overlay */}
+      {/* {isMobile && sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-opacity-50 z-40"
+          onClick={closeSidebar}
+        />
+      )} */}
 
       {/* Navigation Items */}
       <nav className="flex flex-col p-4 space-y-2">
         {links.map((link) => {
           const Icon = link.icon;
-
+          const isActive = currentPage === link.id;
           return (
             <button
               key={link.id}
               className={`
                 flex items-center p-2 rounded
                 transition-all duration-200
-                ${isExpanded ? "gap-4" : "justify-center"}
+               ${isActive ? "bg-amber-500 text-black" : "text-white"}
 
               `}
+              onClick={() => setCurrentPage(link.id as Page)}
             >
               <Icon className="w-5 h-5" />
-              {isExpanded && <span>{link.label}</span>}
+              <span>{link.label}</span>
             </button>
           );
         })}
