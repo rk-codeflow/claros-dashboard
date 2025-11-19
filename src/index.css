@@ -4,9 +4,17 @@
   /* colors  */
   --color-primary: #00b4ad;
   --color-primary-light-1: rgba(156, 226, 222, 0.25);
+  --color-whitesmoke: #f8f8f8;
   --border: oklch(0.92 0 0);
 }
 
 @utility padding {
   @apply px-8 py-4;
+}
+
+.data-table {
+  td,
+  th {
+    padding: 8px 16px;
+  }
 }
