@@ -1,5 +1,5 @@
 import Home from "./components/home/Home";
-import Data from "./components/Data";
+import Data from "./components/data";
 import Sidebar from "./Sidebar";
 import { useAppDispatch, useAppSelector } from "./components/hooks/hooks";
 import { setPage, type Page } from "./slices/pageSlice";
@@ -11,14 +11,14 @@ function App() {
   const sidebarOpen = useAppSelector((s) => s.sidebar.isOpen);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-full">
       <Sidebar
         currentPage={currentPage}
         setCurrentPage={(p: Page) => dispatch(setPage(p))}
         isOpen={sidebarOpen}
       />
 
-      <main className="min-h-screen flex flex-col space-y-6 transition-all duration-300 w-full bg-[#F8F8F8]">
+      <main className="flex flex-col space-y-6 transition-all duration-300 w-full bg-[#F8F8F8]">
         <Header />
         {currentPage === "home" && <Home />}
         {currentPage === "data" && <Data />}

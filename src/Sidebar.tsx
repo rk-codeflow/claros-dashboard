@@ -16,7 +16,7 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
   return (
     <aside
       className={`
-    fixed top-0 left-0 h-full w-60  bg-gray-900 text-white z-50
+    fixed top-0 left-0 h-screen w-60  bg-gray-900 text-white z-50
     transform transition-transform duration-300
     ${isOpen ? "translate-x-0" : "-translate-x-full"}
     sm:relative sm:translate-x-0
@@ -25,7 +25,7 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
       {/* Header + Toggle */}
       <div className="p-6 flex items-center justify-between border-b border-gray-700">
         <div>
-          <h1 className="text-xl font-bold text-[#00b4ad]">ClarosAnalytics</h1>
+          <h1 className="text-xl font-bold text-primary">ClarosAnalytics</h1>
           <p className="text-xs text-gray-300 mt-1">Dashboard</p>
         </div>
       </div>
