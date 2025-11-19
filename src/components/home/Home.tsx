@@ -26,7 +26,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col space-y-10 px-8 py-4">
+    <div className="flex flex-col space-y-10 padding">
       <div>
         <h3 className="text-md sm:text-lg md:text-2xl font-bold">Overview</h3>
         <p className="text-sm text-gray-600">

@@ -1,9 +1,9 @@
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 import Data from "./components/Data";
 import Sidebar from "./Sidebar";
 import { useAppDispatch, useAppSelector } from "./components/hooks/hooks";
 import { setPage, type Page } from "./slices/pageSlice";
-import Header from "./components/Header";
+import Header from "./components/home/Header";
 
 function App() {
   const dispatch = useAppDispatch();

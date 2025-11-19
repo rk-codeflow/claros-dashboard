@@ -1,7 +1,7 @@
-import { toggleSidebar } from "../slices/sidebarSlice";
-import { useAppDispatch } from "./hooks/hooks";
 import { GoBell } from "react-icons/go";
 import { FiMenu } from "react-icons/fi";
+import { useAppDispatch } from "../hooks/hooks";
+import { toggleSidebar } from "../../slices/sidebarSlice";
 
 const Header = () => {
   const dispatch = useAppDispatch();
