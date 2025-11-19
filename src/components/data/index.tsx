@@ -13,6 +13,7 @@ const Data = () => {
       const res = await fetch(url);
       const data = await res.json();
       setProducts(data);
+      console.log({ data });
     } catch (error) {
       console.log("Error", error);
     } finally {
@@ -25,7 +26,7 @@ const Data = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen space-y-10 padding">
+    <div className="flex flex-col h-screen  space-y-10 padding">
       <div>
         <h3 className="text-md sm:text-lg md:text-2xl font-bold">Data Table</h3>
         <p className="text-sm text-gray-600">View the details of data</p>

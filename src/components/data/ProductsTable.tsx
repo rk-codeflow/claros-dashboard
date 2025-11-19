@@ -2,10 +2,15 @@ import { useState } from "react";
 import type { ProductTableProps } from "./interface";
 import { CiSearch } from "react-icons/ci";
 import { useDebounce } from "../hooks/useDebounce";
+import { GrFormNextLink } from "react-icons/gr";
+import { GrFormPreviousLink } from "react-icons/gr";
 
 const ProductsTable = ({ products }: ProductTableProps) => {
   const [inputValue, setInputValue] = useState("");
   const debouncedSearch = useDebounce(inputValue, 500);
+
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const filteredProducts = products.filter((product) => {
     const search = debouncedSearch.toLowerCase();
@@ -14,6 +19,21 @@ const ProductsTable = ({ products }: ProductTableProps) => {
       product.category.name.toLowerCase().includes(search)
     );
   });
+
+  const totalPage = Math.ceil(products.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const itemsToBeDisplayed = filteredProducts.slice(startIndex, endIndex);
+  const goToPrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+  const goToNext = () => {
+    if (currentPage < totalPage) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
   return (
     <div className="flex flex-col space-y-4">
       <div className="relative">
@@ -25,7 +45,7 @@ const ProductsTable = ({ products }: ProductTableProps) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           type="text"
-          placeholder="Search posts by title"
+          placeholder="Search posts by title and category"
           className="w-full pl-12 pr-4 py-3 border border-border rounded-lg placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary bg-white transition-all"
         />
       </div>
@@ -41,9 +61,9 @@ const ProductsTable = ({ products }: ProductTableProps) => {
             </tr>
           </thead>
 
-          <tbody className="text-sm bg-white ">
-            {products.length > 0 ? (
-              filteredProducts.map((product) => {
+          <tbody className="text-sm bg-white">
+            {filteredProducts.length > 0 ? (
+              itemsToBeDisplayed.map((product) => {
                 const {
                   id,
                   title,
@@ -67,11 +87,33 @@ const ProductsTable = ({ products }: ProductTableProps) => {
               })
             ) : (
               <tr>
-                <td colSpan={4}>No data found</td>
+                <td colSpan={4} className="text-center text-xl">
+                  No data found
+                </td>
               </tr>
             )}
           </tbody>
         </table>
+      </div>
+
+      <div className="flex justify-center gap-4 bg-white padding rounded-xl mb-4">
+        <button
+          className="btn disabled:bg-gray-300"
+          onClick={goToPrev}
+          disabled={currentPage === 1}
+        >
+          <GrFormPreviousLink />
+          Previous
+        </button>
+        <button
+          className="btn disabled:bg-gray-300"
+          onClick={goToNext}
+          disabled={currentPage === totalPage}
+        >
+          {" "}
+          Next
+          <GrFormNextLink />
+        </button>
       </div>
     </div>
   );

@@ -8,6 +8,10 @@
   --border: oklch(0.92 0 0);
 }
 
+@utility btn {
+  @apply px-4 py-2 rounded-lg bg-primary text-white flex items-center gap-x-4;
+}
+
 @utility padding {
   @apply px-8 py-4;
 }
