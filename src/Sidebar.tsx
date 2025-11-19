@@ -47,10 +47,10 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
             <button
               key={link.id}
               className={`
+                cursor-pointer
+                hover:translate-x-1 transition-all duration-300
                 flex gap-x-4 items-center py-3 px-4 rounded-md
-                transition-all duration-200
                ${isActive ? "bg-[#00b4ad] text-black" : "text-white"}
-
               `}
               onClick={() => setCurrentPage(link.id as Page)}
             >

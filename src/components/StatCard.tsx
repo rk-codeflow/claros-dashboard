@@ -1,26 +1,24 @@
-import { FaUsersCog } from "react-icons/fa";
-import { BsGraphUpArrow } from "react-icons/bs";
-import { useState } from "react";
+import type { ReactElement } from "react";
 
-const StatCard = () => {
-  const [stats, setstats] = useState({
-    totalUsers: 3200,
-    activeUsers: 2000,
-    inactiveUsers: 500,
-  });
-
+interface StatCardProps {
+  title: string;
+  value: number;
+  increment: number;
+  icon: ReactElement;
+}
+const StatCard = ({ title, value, increment, icon }: StatCardProps) => {
   return (
-    <div className="flex flex-col space-y-4 bg-white p-4">
+    <div className="flex flex-col space-y-4 rounded-xl border-0 bg-white hover:bg-primary-light-1 hover:shadow-md hover:shadow-primary/20 hover:translate-y-0.5  transition-all duration-300 ease-in-out p-4">
       <div className="flex items-center justify-between">
-        <p className="uppercase">total users</p>
-        <div className="h-10 w-10 rounded-lg bg-amber-100 flex items-center justify-center">
-          <FaUsersCog fontSize={22} />
+        <p className="uppercase tracking-wide">{title}</p>
+        <div className="h-10 w-10 rounded-lg bg-[#E2F0F3] flex items-center justify-center">
+          <div className="flex justify-center items-center">{icon}</div>
         </div>
       </div>
-      <h4 className="font-extrabold text-2xl">{stats.totalUsers}</h4>
-      <p className="text-sm flex gap-x-2 items-center">
+      <h4 className="font-extrabold text-2xl">{value}</h4>
+      <p className="text-sm flex gap-x-2 items-center text-primary">
         {" "}
-        <BsGraphUpArrow /> +12% from last week
+        +{increment}% from last week
       </p>
     </div>
   );
