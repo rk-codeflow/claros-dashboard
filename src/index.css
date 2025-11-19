@@ -16,6 +16,13 @@
   @apply px-8 py-4;
 }
 
+@utility active {
+  @apply bg-primary cursor-pointer;
+}
+@utility disabled {
+  @apply bg-gray-300 cursor-not-allowed;
+}
+
 .data-table {
   td,
   th {

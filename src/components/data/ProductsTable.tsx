@@ -96,24 +96,29 @@ const ProductsTable = ({ products }: ProductTableProps) => {
         </table>
       </div>
 
-      <div className="flex justify-center gap-4 bg-white padding rounded-xl mb-4">
-        <button
-          className="btn disabled:bg-gray-300"
-          onClick={goToPrev}
-          disabled={currentPage === 1}
-        >
-          <GrFormPreviousLink />
-          Previous
-        </button>
-        <button
-          className="btn disabled:bg-gray-300"
-          onClick={goToNext}
-          disabled={currentPage === totalPage}
-        >
-          {" "}
-          Next
-          <GrFormNextLink />
-        </button>
+      <div className="flex items-center justify-between gap-4 bg-white p-4  rounded-xl mb-4">
+        <p>{products.length} results</p>
+        <div className="flex gap-x-5">
+          <button
+            className={`btn ${currentPage === 1 ? "disabled" : "active"}`}
+            onClick={goToPrev}
+            disabled={currentPage === 1}
+          >
+            <GrFormPreviousLink />
+            Previous
+          </button>
+          <button
+            className={`btn ${
+              currentPage === totalPage ? "disabled" : "active"
+            }`}
+            onClick={goToNext}
+            disabled={currentPage === totalPage}
+          >
+            {" "}
+            Next
+            <GrFormNextLink />
+          </button>
+        </div>
       </div>
     </div>
   );
