@@ -18,7 +18,7 @@ function App() {
         isOpen={sidebarOpen}
       />
 
-      <main className="flex flex-col space-y-6 transition-all duration-300 w-full bg-whitesmoke">
+      <main className="flex flex-col space-y-3 transition-all duration-300 w-full bg-whitesmoke">
         <Header />
         {currentPage === "home" && <Home />}
         {currentPage === "data" && <Data />}
