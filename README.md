@@ -2,6 +2,16 @@
 
 This is an assignment as part of a Frontend Developer role. Built using React, TypeScript and Tailwing with Redux as state management.
 
+## Installation
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
 ## Inspiration:
 
 In order to prepare a UI, I did some research. I looked over Pinterest, Google Search and a site called uidesigndaily and few others. Since I already have prior experience with dashboard-related projects, it made the work much easier.
