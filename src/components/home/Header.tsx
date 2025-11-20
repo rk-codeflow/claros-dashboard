@@ -7,7 +7,7 @@ import { toggleSidebar } from "../../slices/sidebarSlice";
 const Header = () => {
   const dispatch = useAppDispatch();
   return (
-    <header className="flex items-center justify-between bg-white px-8 py-4 sticky top-0 z-40 backdrop-blur-sm">
+    <header className="flex items-center justify-between bg-white px-8 py-2.5 sticky top-0 z-40 backdrop-blur-sm border border-b border-gray-300">
       <div>
         <h2 className="text-md sm:text-xl md:text-3xl font-bold ">Dashboard</h2>
         <p className="text-md text-gray-600">Welcome back !</p>

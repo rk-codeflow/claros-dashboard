@@ -28,11 +28,9 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
     sm:relative sm:translate-x-0
   `}
     >
-      <div className="p-6 flex items-center justify-between border-b border-gray-700">
-        <div>
-          <h1 className="text-xl font-bold text-primary">ClarosAnalytics</h1>
-          <p className="text-xs text-gray-300 mt-1">Dashboard</p>
-        </div>
+      <div className="p-4 mb-7">
+        <h1 className="text-xl font-bold text-primary">ClarosAnalytics</h1>
+        <p className="text-xs text-gray-300 mt-1 pb-px">Dashboard</p>
       </div>
 
       <nav className="flex flex-col p-4 space-y-4 h-full">
