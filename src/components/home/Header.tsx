@@ -1,5 +1,6 @@
-import { GoBell } from "react-icons/go";
 import { FiMenu } from "react-icons/fi";
+import { FaRegUser } from "react-icons/fa";
+import { VscBellDot } from "react-icons/vsc";
 import { useAppDispatch } from "../hooks/hooks";
 import { toggleSidebar } from "../../slices/sidebarSlice";
 
@@ -12,10 +13,11 @@ const Header = () => {
         <p className="text-md text-gray-600">Welcome back !</p>
       </div>
 
-      <div className="flex gap-x-6">
-        <GoBell className="w-6 h-6 cursor-pointer" />
+      <div className="flex gap-x-8">
+        <VscBellDot className="w-[22px] h-[22px] cursor-pointer hover:animate-pulse text-primary" />
+        <FaRegUser className="w-5 h-5 cursor-pointer text-primary" />
         <FiMenu
-          className="w-6 h-6 cursor-pointer block sm:hidden"
+          className="w-6 h-6 cursor-pointer block sm:hidden text-primary"
           onClick={() => dispatch(toggleSidebar())}
         />
       </div>
