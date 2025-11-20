@@ -6,16 +6,21 @@ const Data = () => {
   const url = "https://api.escuelajs.co/api/v1/products";
   const [products, setProducts] = useState<ProductList[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const fetchLists = async () => {
     try {
       setLoading(true);
+      setError(false);
       const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error("Failed to fetch data");
+      }
       const data = await res.json();
       setProducts(data);
-      console.log({ data });
     } catch (error) {
       console.log("Error", error);
+      setError(true);
     } finally {
       setLoading(false);
     }
@@ -32,7 +37,7 @@ const Data = () => {
         <p className="text-sm text-gray-600">View the details of data</p>
       </div>
 
-      {loading ? <p>Loading</p> : <ProductsTable products={products} />}
+      <ProductsTable products={products} loading={loading} error={error} />
     </div>
   );
 };
