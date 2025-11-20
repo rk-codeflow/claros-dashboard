@@ -19,7 +19,7 @@ const lists = [
 ];
 const Details = () => {
   return (
-    <div className="bg-white p-4 rounded-xl flex flex-col space-y-4 hover:bg-primary-light-1 hover:shadow-md hover:shadow-primary/20 hover:translate-y-0.5  transition-all duration-300 ease-in-out">
+    <div className="bg-white p-4 rounded-xl flex flex-col space-y-4 hover:bg-primary-light-1 hover:shadow-md hover:shadow-primary/20 hover:translate-y-0.5  transition-all duration-300 ease-in-out border border-gray-200">
       <div>
         <h4 className="font-bold text-lg">About the project</h4>
         <p className="text-sm text-gray-400">Key features</p>

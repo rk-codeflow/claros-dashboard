@@ -65,7 +65,7 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
           onChange={(e) => setInputValue(e.target.value)}
           type="text"
           placeholder="Search posts by title and category"
-          className="w-full pl-12 pr-4 py-3 border border-border rounded-lg placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary bg-white transition-all"
+          className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary bg-white transition-all"
         />
       </div>
 

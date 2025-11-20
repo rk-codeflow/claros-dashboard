@@ -16,13 +16,13 @@ const Generic = ({
   icon,
 }: GenericProps) => {
   return (
-    <div className="flex flex-col  space-y-10 padding">
+    <div className="flex flex-col space-y-10 padding ">
       <div>
         <h3 className="text-md sm:text-lg md:text-2xl font-bold">{heading}</h3>
         <p className="text-sm text-gray-600">{subHeading}</p>
       </div>
 
-      <div className="bg-white p-4 rounded-xl flex items-center justify-between">
+      <div className="bg-white p-4 rounded-xl flex items-center justify-between border border-gray-200 hover:border-primary transition-all duration-500">
         <div>
           <h4 className="font-bold text-lg">{title}</h4>
           <p className="text-sm text-gray-400">{subTitle}</p>

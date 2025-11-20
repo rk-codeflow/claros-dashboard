@@ -4,10 +4,10 @@ import { MdLogout } from "react-icons/md";
 const Logout = () => {
   return (
     <Generic
-      heading="Reports"
-      subHeading="View the detailed report here"
-      title="Report page under construction"
-      subTitle="Reports with visualization"
+      heading="Logout"
+      subHeading="Manage logout from here"
+      title="Logout page under construction"
+      subTitle="Logout"
       icon={<MdLogout className="text-primary" />}
     />
   );
