@@ -3,6 +3,7 @@ import StatCard from "./StatCard";
 import { FaUsersCog } from "react-icons/fa";
 import { FaHeartCircleCheck } from "react-icons/fa6";
 import { FaHeartCrack } from "react-icons/fa6";
+import Details from "./Details";
 
 const Home = () => {
   const [stats, setstats] = useState({
@@ -55,6 +56,10 @@ const Home = () => {
           increment={Math.ceil(Math.random() + 5)}
           icon={<FaHeartCrack fontSize={22} color="#00b4ad" />}
         />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <Details />
       </div>
     </div>
   );

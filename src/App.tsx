@@ -4,6 +4,9 @@ import Sidebar from "./Sidebar";
 import { useAppDispatch, useAppSelector } from "./components/hooks/hooks";
 import { setPage, type Page } from "./slices/pageSlice";
 import Header from "./components/home/Header";
+import Analytics from "./components/Analytics";
+import Reports from "./components/Reports";
+import Logout from "./components/Logout";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,6 +25,9 @@ function App() {
         <Header />
         {currentPage === "home" && <Home />}
         {currentPage === "data" && <Data />}
+        {currentPage === "analytics" && <Analytics />}
+        {currentPage === "reports" && <Reports />}
+        {currentPage === "logout" && <Logout />}
       </main>
     </div>
   );

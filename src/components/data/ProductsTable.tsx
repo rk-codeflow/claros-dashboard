@@ -65,7 +65,7 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
           onChange={(e) => setInputValue(e.target.value)}
           type="text"
           placeholder="Search posts by title and category"
-          className="w-full pl-12 pr-4 py-3 border border-border rounded-lg placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary bg-white transition-all"
+          className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary bg-white transition-all"
         />
       </div>
 
@@ -82,7 +82,7 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
       ) : (
         <>
           <div className="relative flex flex-col w-full text-gray-700 bg-white shadow-md rounded-lg bg-clip-border">
-            <table className="table-fixed data-table border border-whitesmoke rounded">
+            <table className="table-auto data-table border border-whitesmoke rounded">
               <thead>
                 <tr className="font-bold text-sm text-slate-500 border-b border-slate-300 bg-slate-50">
                   <td>Picture</td>
