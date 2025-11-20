@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ProductTableProps } from "./interface";
 import { CiSearch } from "react-icons/ci";
 import { useDebounce } from "../hooks/useDebounce";
@@ -14,15 +14,18 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
+  const search = debouncedSearch.trim().toLowerCase();
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
+
   const filteredProducts = products.filter((product) => {
-    const search = debouncedSearch.toLowerCase();
-    return (
-      product.title.toLowerCase().includes(search) ||
-      product.category.name.toLowerCase().includes(search)
-    );
+    if (!search) return true;
+    const title = product.title.toLowerCase();
+    const category = product.category?.name?.toLowerCase() ?? "";
+    return title.includes(search) || category.includes(search);
   });
 
-  console.log({ filteredProducts });
   const totalPages = Math.max(
     1,
     Math.ceil(filteredProducts.length / itemsPerPage)
