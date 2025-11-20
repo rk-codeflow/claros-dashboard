@@ -22,17 +22,23 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
     );
   });
 
-  const totalPage = Math.ceil(products.length / itemsPerPage);
+  console.log({ filteredProducts });
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredProducts.length / itemsPerPage)
+  );
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const itemsToBeDisplayed = filteredProducts.slice(startIndex, endIndex);
+  const itemsToBeDisplayed = filteredProducts.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
   const goToPrev = () => {
     if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
     }
   };
   const goToNext = () => {
-    if (currentPage < totalPage) {
+    if (currentPage < totalPages) {
       setCurrentPage((prev) => prev + 1);
     }
   };
@@ -115,8 +121,11 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
                   })
                 ) : (
                   <tr>
-                    <td colSpan={4} className="text-center text-xl">
-                      No data found
+                    <td
+                      colSpan={4}
+                      className="text-center text-md text-gray-500"
+                    >
+                      No products found
                     </td>
                   </tr>
                 )}
@@ -124,26 +133,30 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
             </table>
           </div>
 
-          <div className="flex items-center justify-end gap-4 bg-white p-4  rounded-xl mb-4">
-            <button
-              className={`btn ${currentPage === 1 ? "disabled" : "active"}`}
-              onClick={goToPrev}
-              disabled={currentPage === 1}
-            >
-              <GrFormPreviousLink />
-              Previous
-            </button>
-            <button
-              className={`btn ${
-                currentPage === totalPage ? "disabled" : "active"
-              }`}
-              onClick={goToNext}
-              disabled={currentPage === totalPage}
-            >
-              {" "}
-              Next
-              <GrFormNextLink />
-            </button>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white p-4  rounded-xl mb-4">
+            <p className="text-sm">Found {filteredProducts.length} results</p>
+            <div className="flex gap-x-6">
+              <button
+                className={`btn ${currentPage === 1 ? "disabled" : "active"}`}
+                onClick={goToPrev}
+                disabled={currentPage === 1}
+              >
+                <GrFormPreviousLink />
+                Previous
+              </button>
+
+              <button
+                className={`btn ${
+                  currentPage === totalPages ? "disabled" : "active"
+                }`}
+                onClick={goToNext}
+                disabled={currentPage === totalPages}
+              >
+                {" "}
+                Next
+                <GrFormNextLink />
+              </button>
+            </div>
           </div>
         </>
       )}
