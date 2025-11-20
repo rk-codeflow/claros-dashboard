@@ -14,7 +14,7 @@ const Header = () => {
       </div>
 
       <div className="flex gap-x-8">
-        <VscBellDot className="w-[22px] h-[22px] cursor-pointer hover:animate-pulse text-primary" />
+        <VscBellDot className="w-[22px] h-[22px] cursor-pointer animate-pulse text-primary" />
         <FaRegUser className="w-5 h-5 cursor-pointer text-primary" />
         <FiMenu
           className="w-6 h-6 cursor-pointer block sm:hidden text-primary"
