@@ -84,8 +84,8 @@ const ProductsTable = ({ products, loading, error }: ProductTableProps) => {
         </div>
       ) : (
         <>
-          <div className="relative flex flex-col w-full text-gray-700 bg-white shadow-md rounded-lg bg-clip-border">
-            <table className="table-auto data-table border border-whitesmoke rounded">
+          <div className="relative flex flex-col w-full text-gray-700 bg-white shadow-md rounded-lg bg-clip-border overflow-x-auto">
+            <table className="table-auto data-table border border-whitesmoke rounded ">
               <thead>
                 <tr className="font-bold text-sm text-slate-500 border-b border-slate-300 bg-slate-50">
                   <td>Picture</td>
