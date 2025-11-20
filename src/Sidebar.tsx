@@ -3,6 +3,8 @@ import type { Page } from "./slices/pageSlice";
 import { MdLogout } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { FaChartPie } from "react-icons/fa";
+import { useAppDispatch } from "./components/hooks/hooks";
+import { closeSidebar } from "./slices/sidebarSlice";
 
 interface SidebarProps {
   currentPage: string;
@@ -11,6 +13,8 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
+  const dispatch = useAppDispatch();
+
   const links = [
     { id: "home", label: "Home", icon: FaHome },
     { id: "data", label: "Data", icon: FaDatabase },
@@ -46,7 +50,9 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
                 flex gap-x-4 items-center py-3 px-4 rounded-md last:mt-auto
                ${isActive ? "bg-primary text-black" : "text-white"}
               `}
-              onClick={() => setCurrentPage(link.id as Page)}
+              onClick={() => {
+                setCurrentPage(link.id as Page), dispatch(closeSidebar());
+              }}
             >
               <Icon className="w-5 h-5" />
               <span className="font-medium text-sm">{link.label}</span>
