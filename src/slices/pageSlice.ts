@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-export type Page = "home" | "data";
+export type Page = "home" | "data" | "analytics" | "reports" | "logout";
 
 interface PageState {
   currentPage: Page;
