@@ -1,8 +1,8 @@
-import type { Page } from "./slices/pageSlice";
 import { FaHome, FaDatabase } from "react-icons/fa";
+import type { Page } from "./slices/pageSlice";
+import { MdLogout } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { FaChartPie } from "react-icons/fa";
-import { MdLogout } from "react-icons/md";
 
 interface SidebarProps {
   currentPage: string;
@@ -21,7 +21,7 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
 
   return (
     <aside
-      className={`
+      className={`flex flex-col
     fixed top-0 left-0 h-screen w-60  bg-gray-900 text-white z-50
     transform transition-transform duration-800
     ${isOpen ? "translate-x-0" : "-translate-x-full"}
@@ -35,7 +35,7 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
         </div>
       </div>
 
-      <nav className="flex flex-col p-4 space-y-4">
+      <nav className="flex flex-col p-4 space-y-4 h-full">
         {links.map((link) => {
           const Icon = link.icon;
           const isActive = currentPage === link.id;
@@ -45,7 +45,7 @@ const Sidebar = ({ currentPage, setCurrentPage, isOpen }: SidebarProps) => {
               className={`
                 cursor-pointer
                 hover:translate-x-1 transition-all duration-300
-                flex gap-x-4 items-center py-3 px-4 rounded-md
+                flex gap-x-4 items-center py-3 px-4 rounded-md last:mt-auto
                ${isActive ? "bg-primary text-black" : "text-white"}
               `}
               onClick={() => setCurrentPage(link.id as Page)}
